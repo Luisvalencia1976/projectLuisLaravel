@@ -39,7 +39,7 @@ class PostController extends Controller
     public function store(PostStore $request)
     {
         Post::create($request -> validated());
-        return back()->with('status','Publicacion creada con exito');   
+        return back()->with('status','Publicacion creada con exito');
     }
 
     /**
@@ -74,7 +74,7 @@ class PostController extends Controller
     public function update(PostStore $request, Post $post)
     {
         $post->update($request -> validated());
-        return back()->with('status','Publicacion editada con exito');  
+        return back()->with('status','Publicacion editada con exito');
     }
 
     /**
@@ -85,6 +85,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post-> delete();
+        return back()->with('status',"Publicacion eliminada con exito");
     }
 }
